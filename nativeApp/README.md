@@ -13,8 +13,6 @@ The key is already defined in the code.
 
 ## Installation
 
-Unlike the web version this app does not use docker to run it. I found it was easier to run it directly on the host because Expo uses a lot of resources from it.
-
 Following the basic installation
 
 ```npm

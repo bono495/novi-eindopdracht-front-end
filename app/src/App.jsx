@@ -1,17 +1,12 @@
 /* eslint-disable react/prop-types  */
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-  // Link
 } from 'react-router-dom';
 
-// Bootstrap css form https://getbootstrap.com/
-import 'bootstrap/dist/css/bootstrap.css';
-
-import './App.css';
+import './App.scss';
 
 // Components
 import Login from './components/login/Login';
@@ -19,59 +14,30 @@ import Home from './components/home/Home';
 import Register from './components/register/Register';
 import Lost from './components/lost/Lost';
 import Movies from './components/movies/Movies';
+import { useAuthState } from './context/AuthContext';
 
 export default function App() {
+  const { isAuthenticated } = useAuthState();
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <PrivateRoute>
-          <Route exact path="/register">
-            <Register />
-          </Route>
-          <Route exact path="/home">
-            <Home />
-          </Route>
-          <Route exact path="/movies">
-            <Movies />
-          </Route>
-          <Route exact path="/lost">
-            <Lost />
-          </Route>
-          <Route>
-            <Redirect to="/lost" />
-          </Route>
-        </PrivateRoute>
-        <Route>
-          <Redirect to="/login" />
-        </Route>
-      </Switch>
-    </Router>
-  );
-}
-
-// function logOut() {
-//   localStorage.removeItem('token');
-//   localStorage.removeItem('expires_in');
-// }
-
-function PrivateRoute({ children }) {
-  return (
-    <Route
-      render={({ location }) => (
-        localStorage.getItem('token') && localStorage.getItem('expires_in') > Date.now() ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/login',
-              state: { from: location },
-            }}
-          />
-        )
-      )}
-    />
+    <Switch>
+      <Route exact path="/login">
+        <Login />
+      </Route>
+      <Route exact path="/register">
+        <Register />
+      </Route>
+      <Route exact path="/home">
+        {isAuthenticated ? <Home /> : <Redirect to="/login" />}
+      </Route>
+      <Route exact path="/movies">
+        {isAuthenticated ? <Movies /> : <Redirect to="/login" />}
+      </Route>
+      <Route exact path="/lost">
+        <Lost />
+      </Route>
+      <Route>
+        <Redirect to="/lost" />
+      </Route>
+    </Switch>
   );
 }

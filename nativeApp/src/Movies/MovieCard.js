@@ -1,26 +1,23 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { string } from 'prop-types';
 import {
   StyleSheet, Text, View, Image
 } from 'react-native';
 
 const MovieCard = (props) => {
   useEffect(() => {
-    console.log(props);
-    return () => {
-      console.log('unmount');
-      return null;
-    };
-  });
-  const { movie } = props;
+  }, [props]);
+  const {
+    image, title, plot,
+  } = props;
   return (
-    <View style={styles.card} key={movie.id.toString()}>
+    <View style={styles.card}>
       <Image
         style={styles.image}
-        source={{ uri: movie.image }}
+        source={{ uri: image }}
       />
-      <Text style={styles.title}>{movie.title}</Text>
-      <Text style={styles.text}>{movie.plot}</Text>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.text}>{plot}</Text>
     </View>
   );
 };
@@ -52,11 +49,15 @@ const styles = StyleSheet.create({
 });
 
 MovieCard.defaultProps = {
-  movie: {},
+  title: string,
+  image: string,
+  plot: string,
 };
 
 MovieCard.propTypes = {
-  movie: PropTypes.objectOf(PropTypes.object),
+  title: string,
+  image: string,
+  plot: string,
 };
 
 export default MovieCard;

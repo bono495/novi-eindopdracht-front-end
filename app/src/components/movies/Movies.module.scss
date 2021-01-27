@@ -1,0 +1,76 @@
+.movies {
+    background: rgb(174,210,238);
+    background: radial-gradient(circle, rgba(174,210,238,1) 0%, rgba(160,148,233,1));
+    height: 100%;
+    margin: auto;
+    padding: 3em;
+
+    .title {
+        text-align: center;
+    }
+
+    .moviesDiv {
+        margin: auto;
+        height: 100%;
+        max-height: 80vh;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        display: inline-flex;
+        flex-direction: column;
+    }
+
+    /* To hide the scrollbar of the div */
+    .movies-div::-webkit-scrollbar {
+        display: none;
+    }
+
+    .homeButton {
+        position: absolute;
+        left: 1em;
+        top: 1em;
+        background-color: #b0c4de57;
+        border: 0;
+        border-radius: 1em;
+        padding: 0.7em;
+        a {
+            text-decoration: none;
+        }
+        &:hover {
+            background-color: lightblue;
+        }
+    }
+}
+
+.card {
+    background-color: white;
+    padding: 1em;
+    margin-bottom: 2em;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    max-height: 15em;
+    @media only screen and (max-width: 40em){
+        max-height: 30em;
+    }
+    display: flex;
+    .movieImage {
+        max-width: 30%;
+        max-height: 15em;
+        @media only screen and (max-width: 40em){
+            display: none;
+        }
+    }
+    .text {
+        margin-left: 1em;
+        max-height: 14em;
+        z-index: 10;
+        width: 70%;
+        @media only screen and (max-width: 40em){
+            width: 100%;
+            max-height: 30em;
+        }
+    }
+    .title {
+        text-align: center;
+    }
+}

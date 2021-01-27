@@ -17,19 +17,17 @@ The key is already defined in the code.
 
 ## Installation
 
-I have chosen to make my own back-end for learning purposes but because the back-end is rather hard to install I made docker containers.
+If you have Nodejs installed it should have come preloaded with Npm.
+In that case you can just run:
 
-
-```docker
-// Create the images with the applications in it
-docker-compose up -d
+```npm
+npm install
 ```
 
-After it is ready we create the user
+After it is ready start the app
 
 ```docker
-// Used to generate tokens and create a default user.
-docker-compose exec back-end composer start
+npm start
 ```
 
 ## Login
@@ -39,9 +37,9 @@ A default user is already filled in the login field but here are the credentials
 Email: welkom@gmail.com\
 Password: Welkom123
 
-You can create new users once logged in.
+You can also create new users.
 
 ## Other
 
 To find more commands please consult the documentation:
-[Docker documentation](https://docs.docker.com/).
+[Npm](https://docs.npmjs.com/cli/v6/commands).

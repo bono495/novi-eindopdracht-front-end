@@ -25,7 +25,14 @@ const Movies = () => {
     <View style={styles.container}>
       <Text>Laatste films</Text>
       {movies
-        && movies.map((movie) => (<MovieCard movie={movie} />))}
+        && movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            image={movie.image}
+            title={movie.title}
+            plot={movie.plot}
+          />
+        ))}
     </View>
   );
 };

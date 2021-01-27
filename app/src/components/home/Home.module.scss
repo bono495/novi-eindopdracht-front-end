@@ -1,0 +1,50 @@
+.home {
+    height: 100%;
+    background: rgb(174,210,238);
+    background: radial-gradient(circle, rgba(174,210,238,1) 0%, rgba(160,148,233,1) 100%);
+    padding-top: 3em;
+    .quote {
+        text-align: center;
+        width: 60%;
+        margin: auto;
+        font-family: cursive;
+    }
+    .navigationButtons {
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin: 3em auto auto;
+        width: 100%;
+
+        .registerButton, .moviesButton, .lostButton {
+            text-align: center;
+            width: 8em;
+            background-color: #b0c4de57;
+            border: 0;
+            border-radius: 1em;
+            padding: 0.7em;
+            margin-bottom: 2em;
+            a {
+                text-decoration: none;
+            }
+            &:hover {
+                background-color: lightblue;
+            }
+        }
+
+        .logoutButton, .deleteAccountButton {
+            text-align: center;
+            width: 8em;
+            background-color: #b0c4de57;
+            border: 0;
+            border-radius: 1em;
+            padding: 1em;
+            margin-bottom: 2em;
+            font-size: 1em;
+            &:hover {
+                background-color: lightblue;
+            }
+        }
+    }
+}

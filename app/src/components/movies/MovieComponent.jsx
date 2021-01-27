@@ -1,53 +1,47 @@
 import React, { useEffect } from 'react';
-import PropTypes, { string } from 'prop-types';
+import { string } from 'prop-types';
+import style from './Movies.module.scss';
 
 const MovieCard = (props) => {
+  const {
+    image, title, plot, releaseState,
+  } = props;
+
   useEffect(() => {
   }, [props]);
 
-  const { movie } = props;
   return (
-    <div className="row mt-4" key={movie.id}>
-      <div className="col-12 card pl-0">
-        <div className="row no-gutters">
-          <div className="col-2">
-            <img src={movie.image} alt="movie banner" className="img-fluid rounded " />
-          </div>
-          <div className="col-10 text-left">
-            <div className="card-body">
-              <h3 className="card-title">
-                {movie.title}
-              </h3>
-              <p className="card-text">
-                {movie.plot}
-              </p>
-              <p className="card-text">
-                <small className="text-muted">
-                  {movie.releaseState}
-                </small>
-              </p>
-            </div>
-          </div>
-        </div>
+    <div className={style.card}>
+      <img src={image} alt="movie banner" className={style.movieImage} />
+      <div className={style.text}>
+        <h3 className={style.title}>
+          {title}
+        </h3>
+        <p className={style.plot}>
+          {plot}
+        </p>
+        <p className={style.releaseState}>
+          <small className="">
+            {releaseState}
+          </small>
+        </p>
       </div>
     </div>
   );
 };
 
 MovieCard.defaultProps = {
-  movie: {
-    id: string,
-    title: string,
-    releaseState: string,
-    image: string,
-    plot: string,
-  },
-  id: string,
+  title: string,
+  releaseState: string,
+  image: string,
+  plot: string,
 };
 
 MovieCard.propTypes = {
-  movie: PropTypes.objectOf(PropTypes.object),
-  id: PropTypes.string,
+  title: string,
+  releaseState: string,
+  image: string,
+  plot: string,
 };
 
 export default MovieCard;

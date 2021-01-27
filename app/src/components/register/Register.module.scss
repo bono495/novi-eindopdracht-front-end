@@ -1,0 +1,32 @@
+.register {
+    height: 100%;
+    background: rgb(174,210,238);
+    background: radial-gradient(circle, rgba(174,210,238,1) 0%, rgba(160,148,233,1) 100%);
+    padding-top: 5em;
+
+    img {
+        display: block;
+        margin: auto;
+        max-width: 100px;
+    }
+    .registerForm {
+        // To center the div
+        margin: auto;
+        text-align: center;
+        width: 15em;
+        padding: 3em;
+        border: 1px solid #ccc;
+        border-radius: 16px;
+        background-color: white;
+    }
+    .submitButton {
+        margin-top: 1.5em;
+        background-color: white;
+        border: 0;
+        border-radius: 1em;
+        padding: 0.9em;
+        &:hover {
+            background-color: lightblue;
+        }
+    }
+}

@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-
-import './Movies.css';
+import style from './Movies.module.scss';
 
 import MovieCard from './MovieComponent';
 
 const Movies = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState();
   const [error, setError] = useState(undefined);
 
   useEffect(() => {
@@ -21,29 +19,30 @@ const Movies = () => {
     }).catch((err) => {
       setError(err.message);
     });
-
     return () => {
       source.cancel('Component got unmounted');
     };
   }, []);
 
   return (
-    <div className="background h-100 text-center">
-      <div className="position-absolute ml-2 mt-2">
-        <Button variant="outline-primary" type="button">
-          <Link to="home"><h3>Terug naar Home</h3></Link>
-        </Button>
+    <div className={style.movies}>
+      <div className={style.homeButton}>
+        <Link to="home"><h3>Terug naar Home</h3></Link>
       </div>
-      <h1 className="pt-5 w-75 mx-auto">
+      <h1 className={style.title}>
         Laatste films
       </h1>
-      <div className="container mt-5 movies-div">
+      <div className={style.moviesDiv}>
         {
-            movies.length > 0
+            movies !== undefined
               ? movies.map((movie) => (
-                <div key={movie.id.toString()}>
-                  <MovieCard movie={movie} />
-                </div>
+                <MovieCard
+                  key={movie.id}
+                  releaseState={movie.releaseState}
+                  image={movie.image}
+                  title={movie.title}
+                  plot={movie.plot}
+                />
               ))
               : error
           }
